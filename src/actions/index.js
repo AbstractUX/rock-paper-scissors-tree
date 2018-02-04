@@ -16,3 +16,15 @@ export function loseGame() {
     type: 'LOSE_GAME'
   }
 }
+
+export function timesUp() {
+  return {
+    type: 'TIMES_UP'
+  }
+}
+
+export function countDown() {
+  return {
+    type: 'COUNTDOWN'
+  }
+}

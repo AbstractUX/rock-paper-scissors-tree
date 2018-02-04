@@ -4,6 +4,8 @@ export default function(state = null, action) {
       return 'gameStarted';
     case 'LOSE_GAME':
       return 'lostGame';
+    case 'TIMES_UP':
+      return 'timesUp';
     default:
       return 'gameStarted';
   }

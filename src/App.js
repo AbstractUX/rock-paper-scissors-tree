@@ -4,11 +4,25 @@ import './App.css';
 import PointsDisplay from './containers/PointsDisplay';
 import UserHandButton from './containers/UserHandButton';
 import ComputerHand from './containers/ComputerHand';
+import TimerDisplay from './containers/TimerDisplay';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { countDown, timesUp } from './actions/index';
 
 let mainDisplay = null;
+let timerFunction = null;
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.checkIfTimesUp = this.checkIfTimesUp.bind(this);
+  }
+
+  componentDidMount() {
+    timerFunction = setInterval(() => { this.props.countDown() }, 1000);
+  }
+
   chooseMainDisplay() {
       console.log(this.props.mainDisplay);
       if (this.props.mainDisplay === 'gameStarted') {
@@ -24,6 +38,7 @@ class App extends Component {
           <div>
             <ComputerHand />
             <PointsDisplay />
+            <TimerDisplay />
           </div>
         </div>
       </div>)
@@ -35,11 +50,28 @@ class App extends Component {
         <p>Taking a short break? Check out this <a href="http://amzn.to/2E0dnJk">Rock Paper Scissors book</a> on amazon.</p>
         <button onClick={() => {window.location.reload(false);}}>PLAY AGAIN!</button>
     </div>
+    } else if (this.props.mainDisplay === 'timesUp') {
+      mainDisplay = <div>
+        <h1>TIME'S UP!</h1>
+        <strong><p>You're pretty good at this aren't you?</p></strong>
+        <h3>Your Final Score is: {this.props.points}</h3>
+        <p>Taking a short break? Check out this <a href="http://amzn.to/2E0dnJk">Rock Paper Scissors book</a> on amazon.</p>
+        <button onClick={() => {window.location.reload(false);}}>PLAY AGAIN!</button>
+    </div>
+    }
+  }
+
+  checkIfTimesUp() {
+    if (this.props.timer <= 0) {
+      console.log('times up triggered');
+      clearInterval(timerFunction);
+      this.props.timesUp();
     }
   }
 
   render() {
     this.chooseMainDisplay();
+    this.checkIfTimesUp();
 
     return (
       <div className="App">
@@ -59,8 +91,16 @@ class App extends Component {
 function mapStateToProps(state) {
     return {
       mainDisplay: state.mainDisplay,
-      points: state.points
+      points: state.points,
+      timer: state.timer
     }
 }
 
-export default connect(mapStateToProps)(App);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({
+    countDown,
+    timesUp
+  }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
