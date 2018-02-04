@@ -1,0 +1,6 @@
+.PointsDisplay-display {
+  border: 1px solid purple;
+  width: 10em;
+  background: azure;
+  display: inline-block;
+}

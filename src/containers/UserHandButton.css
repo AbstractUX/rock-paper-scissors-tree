@@ -1,0 +1,11 @@
+.UserHandButton-button {
+  height: 3.5em;
+  width: 3.5em;
+  margin: 0.2em;
+  border: 2px solid purple;
+  background: yellow;
+}
+
+.UserHandButton-button:hover {
+  background: orange;
+}
