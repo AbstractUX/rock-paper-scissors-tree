@@ -63,6 +63,7 @@ class UserHandButton extends Component {
 
   loseHand() {
     console.log('lose hand');
+    clearInterval(this.props.timerFunction);
     this.props.loseGame();
   }
 

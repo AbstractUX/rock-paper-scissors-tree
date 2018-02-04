@@ -28,10 +28,10 @@ class App extends Component {
       if (this.props.mainDisplay === 'gameStarted') {
         mainDisplay = (<div>
           <div className="App-user-hand-buttons-container">
-          <UserHandButton handImg='rock' />
-          <UserHandButton handImg='paper' />
-          <UserHandButton handImg='scissors' />
-          <UserHandButton handImg='axe' />
+          <UserHandButton timerFunction={timerFunction} handImg='rock' />
+          <UserHandButton timerFunction={timerFunction} handImg='paper' />
+          <UserHandButton timerFunction={timerFunction} handImg='scissors' />
+          <UserHandButton timerFunction={timerFunction} handImg='axe' />
         </div>
         <div>
           <h1>Pick the hand that will beat mine</h1>
