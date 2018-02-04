@@ -1,7 +1,8 @@
 .UserHandButton-button {
   height: 3.5em;
   width: 3.5em;
-  margin: 0.2em;
+  margin-left: 1em;
+  margin-top: 0.5em;
   border: 2px solid purple;
   background: yellow;
 }

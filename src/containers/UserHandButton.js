@@ -66,7 +66,7 @@ class UserHandButton extends Component {
     console.log('lose hand');
   }
 
-  componentWillMount() {
+  renderHandImages() {
     switch (this.props.handImg) {
       case 'rock':
         handImg = rock;
@@ -84,6 +84,7 @@ class UserHandButton extends Component {
   }
 
   render() {
+      this.renderHandImages();
       return (
       <div>
         <img className='UserHandButton-button' src={handImg} onClick={this.checkIfWinHand}></img>
