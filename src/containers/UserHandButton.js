@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { addPoint } from '../actions/index';
-import { changeComputerHand } from '../actions/index';
+import { addPoint, changeComputerHand, loseGame } from '../actions/index';
 import './UserHandButton.css';
 import rock from '../img/rock.png';
 import paper from '../img/paper.png';
@@ -64,6 +63,7 @@ class UserHandButton extends Component {
 
   loseHand() {
     console.log('lose hand');
+    this.props.loseGame();
   }
 
   renderHandImages() {
@@ -102,7 +102,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return bindActionCreators({
     addPoint,
-    changeComputerHand
+    changeComputerHand,
+    loseGame
   }, dispatch);
 }
 

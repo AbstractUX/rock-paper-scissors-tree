@@ -10,3 +10,9 @@ export function changeComputerHand(nextHand) {
     payload: nextHand
   }
 }
+
+export function loseGame() {
+  return {
+    type: 'LOSE_GAME'
+  }
+}
