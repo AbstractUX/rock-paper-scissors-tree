@@ -31,7 +31,8 @@ class App extends Component {
       mainDisplay = <div>
         <h1>GAME OVER!</h1>
         <strong><p>You picked the wrong hand!</p></strong>
-        <strong><p>Your Final Score is: {this.props.points}</p></strong>
+        <h3>Your Final Score is: {this.props.points}</h3>
+        <p>Taking a short break? Check out this <a href="http://amzn.to/2E0dnJk">Rock Paper Scissors book</a> on amazon.</p>
         <button onClick={() => {window.location.reload(false);}}>PLAY AGAIN!</button>
     </div>
     }
@@ -47,6 +48,9 @@ class App extends Component {
         </header>
         <h1 className="App-title">Welcome to Rock, Paper, Scissors, Tree!</h1>
         {mainDisplay}
+        <footer>
+          <p>We are a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for us to earn fees by linking to Amazon.com and affiliated sites.</p>
+        </footer>
       </div>
     );
   }
